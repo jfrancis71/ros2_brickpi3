@@ -48,8 +48,8 @@ class CompassNode(Node):
             q.x, q.y, q.z, q.w = quaternion
             self.publisher.publish(msg)
         except brickpi3.SensorError as e:
-            error_msg = f'Invalid compass sensor data on {self.lego_port_name}'
-            self.get_logger().error(error_msg)
+            warn_msg = f'Invalid compass sensor data on {self.lego_port_name}'
+            self.get_logger().warn(warn_msg)
 
 
 rclpy.init()

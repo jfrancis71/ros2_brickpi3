@@ -45,8 +45,8 @@ class UltrasonicDistanceNode(Node):
             msg.range = ultrasonic_distance/100.0  # raw sensor is in cm's
             self.publisher.publish(msg)
         except brickpi3.SensorError as e:
-            error_msg = f'Invalid ultrasonic distance sensor data on {self.lego_port_name}'
-            self.get_logger().error(error_msg)
+            warn_msg = f'Invalid ultrasonic distance sensor data on {self.lego_port_name}'
+            self.get_logger().warn(warn_msg)
 
 
 rclpy.init()
