@@ -20,9 +20,9 @@ class TouchSensorNode(Node):
         try:
             self.lego_port = port_dict[self.lego_port_name]
         except KeyError as e:
-            error_msg = f'Unknown lego input port: {e}'
-            self.get_logger().fatal(error_msg)
-            raise IOError(error_msg) from e
+            fatal_msg = f'Unknown lego input port: {e}'
+            self.get_logger().fatal(fatal_msg)
+            raise IOError(fatal_msg) from e
         self.bp.set_sensor_type(self.lego_port, self.bp.SENSOR_TYPE.TOUCH)
         self.declare_parameter('frequency', 2.0)
         timer_period = 1.0/self.get_parameter('frequency').get_parameter_value().double_value

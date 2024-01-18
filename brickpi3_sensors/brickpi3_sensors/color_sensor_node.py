@@ -26,9 +26,9 @@ class ColorSensorNode(Node):
         try:
             self.lego_port = port_dict[self.lego_port_name]
         except KeyError as e:
-            error_msg = f'Unknown lego input port: {e}'
-            self.get_logger().fatal(error_msg)
-            raise IOError(error_msg) from e
+            fatal_msg = f'Unknown lego input port: {e}'
+            self.get_logger().fatal(fatal_msg)
+            raise IOError(fatal_msg) from e
         self.declare_parameter('detection_mode', 'COLOR')
         self.detection_mode = \
             self.get_parameter('detection_mode').get_parameter_value().string_value
@@ -43,9 +43,9 @@ class ColorSensorNode(Node):
                 else:
                     self.bp.set_sensor_type(self.lego_port, self.bp.SENSOR_TYPE.EV3_COLOR_AMBIENT)  # pylint: disable=E1101
             else:
-                error_msg = f'Unknown mode: {self.detection_mode}'
-                self.get_logger().fatal(error_msg)
-                raise ValueError(error_msg)
+                fatal_msg = f'Unknown mode: {self.detection_mode}'
+                self.get_logger().fatal(fatal_msg)
+                raise ValueError(fatal_msg)
         self.colormap = ["none", "Black", "Blue", "Green", "Yellow", "Red", "White", "Brown"]
         self.declare_parameter('frequency', 2.0)
         timer_period = 1.0/self.get_parameter('frequency').get_parameter_value().double_value
@@ -58,9 +58,8 @@ class ColorSensorNode(Node):
             if self.detection_mode == "COLOR":
                 msg = Color()
                 if value > len(self.colormap):
-                    error_msg = f'Invalid color returned from {self.lego_port_name}'
-                    self.get_logger().error(error_msg)
-                    raise brickpi3.SensorError(error_msg)
+                    warn_msg = f'Invalid color returned from {self.lego_port_name}'
+                    self.get_logger().warn(warn_msg)
                 msg.color = self.colormap[value]
             else:
                 msg = Illuminance()
