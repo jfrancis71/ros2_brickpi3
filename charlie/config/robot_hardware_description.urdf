@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!-- Basic differential drive mobile base -->
+<robot name="charlie">
+  <ros2_control name="DiffBot" type="system">
+    <hardware>
+      <plugin>brickpi3_motors/BrickPi3MotorsHardware</plugin>
+      <param name="hw_start_duration_sec">0</param>
+      <param name="hw_stop_duration_sec">3.0</param>
+    </hardware>
+    <joint name="PORT_A">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="PORT_D">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+</robot>
+

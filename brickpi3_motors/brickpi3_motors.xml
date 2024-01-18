@@ -1,0 +1,8 @@
+<library path="brickpi3_motors">
+  <class name="brickpi3_motors/BrickPi3MotorsHardware"
+         type="brickpi3_motors::BrickPi3MotorsHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>Motor Hardware interface to Dexter Industries BrickPi3 product which connects Lego EV3 hardware to Raspberry Pi 3.
+    </description>
+  </class>
+</library>
