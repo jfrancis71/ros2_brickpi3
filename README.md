@@ -34,9 +34,7 @@ cd ~
 git clone https://github.com/DexterInd/BrickPi3.git
 pip install BrickPi3/Software/Python
 mkdir -p ros2_ws/src
-cd ros2_ws/src
-git clone https://github.com/jfrancis71/ros2_brickpi3.git
-cd ..
+git -C src clone https://github.com/jfrancis71/ros2_brickpi3.git
 colcon build --symlink-install
 ```
 
