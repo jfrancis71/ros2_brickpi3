@@ -1,6 +1,8 @@
 # ros2_brickpi3
 ROS2 packages to drive BrickPi3 (a Raspberry Pi to Lego EV3 hardware interface)
 
+![Charlie](https://drive.google.com/uc?id=1HpBjWU5ElbmEphY0IHUyzJGjYCNfd94t&export=download)
+
 ## Packages
 
 ev3_sensor_msgs: ROS2 custom message package to support the touch_sensor and color_sensor.
