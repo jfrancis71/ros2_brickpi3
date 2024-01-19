@@ -40,6 +40,7 @@ pip install BrickPi3/Software/Python
 mkdir -p ros2_ws/src
 cd ros2_ws
 git -C src clone https://github.com/jfrancis71/ros2_brickpi3.git
+export BRICKPI_ROOT_DIR=~/BrickPi3
 colcon build --symlink-install
 ```
 
