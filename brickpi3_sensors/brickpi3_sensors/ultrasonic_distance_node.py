@@ -41,7 +41,7 @@ class UltrasonicDistanceNode(Node):
             msg.radiation_type = Range.ULTRASOUND
             msg.field_of_view = 0.05  # very approximate
             msg.min_range = 0.0
-            msg.max_range = 1.0
+            msg.max_range = 2.55
             msg.range = ultrasonic_distance/100.0  # raw sensor is in cm's
             self.publisher.publish(msg)
         except brickpi3.SensorError as e:
