@@ -23,6 +23,8 @@ Ubuntu 22.04, ROS2 Humble (RoboStack), BrickPi3
 
 ## Installation
 
+I suggest for following the installation steps to have the BrickPi3 running off an external power supply (rather than relying on battery power).
+
 Follow the [RoboStack](https://robostack.github.io/GettingStarted.html) installation instructions to install ROS2
 
 (Ensure you have also followed the step Installation tools for local development in the above instructions)
@@ -36,6 +38,7 @@ cd ~
 git clone https://github.com/DexterInd/BrickPi3.git
 pip install BrickPi3/Software/Python
 mkdir -p ros2_ws/src
+cd ros2_ws
 git -C src clone https://github.com/jfrancis71/ros2_brickpi3.git
 colcon build --symlink-install
 ```
