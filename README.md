@@ -30,7 +30,7 @@ Follow the [RoboStack](https://robostack.github.io/GettingStarted.html) installa
 (Ensure you have also followed the step Installation tools for local development in the above instructions)
 
 ```
-mamba activate ros2 # (use the name here you decided to call this conda environment)
+mamba activate ros2  # (use the name here you decided to call this conda environment)
 # scipy is used by the Gyro and Compass sensors. You can remove the scipy install if you do not intend to use
 # these sensors.
 mamba install scipy ros-humble-controller-manager
@@ -76,6 +76,7 @@ Therefore for this you will need to install:
 
 ```
 mamba install ros-humble-diff-drive-controller ros-humble-rsl
+source ./install/setup.bash  # source the ROS2 workspace again
 ```
 
 To start the differential drive controller, run:
