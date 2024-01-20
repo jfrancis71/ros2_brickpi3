@@ -8,10 +8,10 @@ def generate_launch_description():
     robot_description_content = Command([
         "cat ",
         PathJoinSubstitution(
-            [FindPackageShare("charlie"), "config", "robot_hardware_description.urdf"])
+            [FindPackageShare("brickpi3_charlie"), "config", "robot_hardware_description.urdf"])
         ])
     robot_controllers = PathJoinSubstitution(
-            [FindPackageShare("charlie"), "config", "robot_description.yaml"])
+            [FindPackageShare("brickpi3_charlie"), "config", "robot_description.yaml"])
     control_node = Node(
         package="controller_manager",
         executable="ros2_control_node",

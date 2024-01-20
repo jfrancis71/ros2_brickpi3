@@ -2,7 +2,7 @@ import os
 from glob import glob
 from setuptools import setup
 
-package_name = 'charlie'
+package_name = 'brickpi3_charlie'
 
 setup(
     name=package_name,
