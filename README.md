@@ -81,7 +81,7 @@ source ./install/setup.bash  # source the ROS2 workspace again
 
 To start the differential drive controller, run:
 ```
-ros2 launch brickpi3_charlie brickpi3_motors.launch.py
+ros2 launch brickpi3_charlie brickpi3_motors_launch.py
 ```
 Charlie's configuration files are setup to assume BrickPi3 ports A and D are connected to the left and right EV3 motors respectively.
 
