@@ -23,6 +23,8 @@ Ubuntu 22.04, ROS2 Humble (RoboStack), BrickPi3
 
 ## Installation
 
+Note, the user account that you use for this install should be a member of the dialout group (in order to access /dev/spidev... to control the BrickPi3 hardware interface)
+
 I suggest for following the installation steps to have the BrickPi3 running off an external power supply (rather than relying on battery power).
 
 Follow the [RoboStack](https://robostack.github.io/GettingStarted.html) installation instructions to install ROS2
