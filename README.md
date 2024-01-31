@@ -45,6 +45,8 @@ git -C src clone https://github.com/jfrancis71/ros2_brickpi3.git
 export BRICKPI3_ROOT_DIR=~/BrickPi3
 colcon build --symlink-install
 ```
+You may receive a warning on the colcon build step: "SetuptoolsDeprecationWarning: setup.py install is deprecated", this can be ignored.
+
 
 ## Activate Environment
 
