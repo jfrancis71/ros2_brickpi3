@@ -2,6 +2,9 @@
 ROS2 packages to drive BrickPi3 (a Raspberry Pi to Lego EV3 hardware interface)
 
 ![Charlie](https://drive.google.com/uc?id=1HpBjWU5ElbmEphY0IHUyzJGjYCNfd94t&export=download)
+<a href="https://www.youtube.com/watch?v=NZwhyERJVbY">
+    <img src="https://img.youtube.com/vi/NZwhyERJVbY/0.jpg" height=320>
+</a>
 
 ## Packages
 
