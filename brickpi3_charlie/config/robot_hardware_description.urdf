@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!-- Basic differential drive mobile base -->
+<!-- ROS2 Control Hardware Plugin for BrickPi3 -->
 <robot name="charlie">
-  <ros2_control name="DiffBot" type="system">
+  <ros2_control name="BrickPi3" type="system">
     <hardware>
       <plugin>brickpi3_motors/BrickPi3MotorsHardware</plugin>
       <param name="hw_start_duration_sec">0</param>
@@ -19,4 +19,3 @@
     </joint>
   </ros2_control>
 </robot>
-

@@ -16,13 +16,13 @@ def generate_launch_description():
         package="controller_manager",
         executable="ros2_control_node",
         parameters=[{"robot_description": robot_description_content}, robot_controllers],
-        remappings=[("/diffbot_base_controller/cmd_vel_unstamped", "/cmd_vel")],
+        remappings=[("/differential_drive_controller/cmd_vel_unstamped", "/cmd_vel")],
         output="both",
     )
     robot_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["diffbot_base_controller", "--controller-manager", "/controller_manager"],
+        arguments=["differential_drive_controller", "--controller-manager", "/controller_manager"],
     )
     nodes = [
         control_node,
