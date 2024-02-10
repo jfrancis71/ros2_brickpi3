@@ -208,6 +208,10 @@ hardware_interface::return_type BrickPi3MotorsHardware::write(
 {
   for (auto i = 0u; i < hw_commands_.size(); i++)
   {
+    RCLCPP_DEBUG(
+      rclcpp::get_logger("BrickPi3MotorsHardware"),
+      "Command interface %d has value %f.", i,
+      hw_commands_[i]);
     double dps = hw_commands_[i]*360.0/(2.0*MATH_PI);
     brickpi3.set_motor_dps(hw_lego_ports_[i], dps);
   }

@@ -31,6 +31,7 @@ class GyroNode(Node):
         self.declare_parameter('frequency', 2.0)
         timer_period = 1.0/self.get_parameter('frequency').get_parameter_value().double_value
         self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.get_logger().info("Gyro Node has started.")
 
     def timer_callback(self):
         """Reads gyro angular velocity and publishes on /gyro"""
