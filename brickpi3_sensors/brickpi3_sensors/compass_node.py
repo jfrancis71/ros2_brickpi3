@@ -12,9 +12,10 @@ class CompassNode(Node):
     """CompassNode publishes message QuaternionStamped on topic compass_bearing"""
     def __init__(self):
         super().__init__("compass_node")
+        self.declare_parameter('lego_port', 'PORT_1')
+        self.declare_parameter('frequency', 2.0)
         self.bp = brickpi3.BrickPi3()
         self.publisher = self.create_publisher(QuaternionStamped, "compass_bearing", 10)
-        self.declare_parameter('lego_port', 'PORT_1')
         port_dict = { "PORT_1": self.bp.PORT_1,
                       "PORT_2": self.bp.PORT_2,
                       "PORT_3": self.bp.PORT_3,
@@ -28,7 +29,6 @@ class CompassNode(Node):
             raise IOError(fatal_msg) from e
         # Ref 1, also we disable pylint warning as BrickPi does some strange attribute manipulation
         self.bp.set_sensor_type(self.lego_port, self.bp.SENSOR_TYPE.I2C, [0,20]) # pylint: disable=E1101
-        self.declare_parameter('frequency', 2.0)
         timer_period = 1.0/self.get_parameter('frequency').get_parameter_value().double_value
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.get_logger().info("Node has started.")

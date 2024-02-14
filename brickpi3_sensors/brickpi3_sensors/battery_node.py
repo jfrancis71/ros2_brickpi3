@@ -9,9 +9,9 @@ class BatteryNode(Node):
     """Publishes BatteryState message on /battery_state"""
     def __init__(self):
         super().__init__("battery_node")
+        self.declare_parameter('frequency', 1.0/60.0)
         self.bp = brickpi3.BrickPi3()
         self.publisher = self.create_publisher(BatteryState, "/battery_state", 10)
-        self.declare_parameter('frequency', 1.0/60.0)
         timer_period = 1.0/self.get_parameter('frequency').get_parameter_value().double_value
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.timer_callback()

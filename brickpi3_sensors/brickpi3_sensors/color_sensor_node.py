@@ -16,8 +16,10 @@ class ColorSensorNode(Node):
     """ColorSensorNode publishes appropriate message"""
     def __init__(self):
         super().__init__("color_sensor_node")
-        self.bp = brickpi3.BrickPi3()
         self.declare_parameter('lego_port', 'PORT_1')
+        self.declare_parameter('detection_mode', 'COLOR')
+        self.declare_parameter('frequency', 2.0)
+        self.bp = brickpi3.BrickPi3()
         port_dict = { "PORT_1": self.bp.PORT_1,
                       "PORT_2": self.bp.PORT_2,
                       "PORT_3": self.bp.PORT_3,
@@ -29,7 +31,6 @@ class ColorSensorNode(Node):
             fatal_msg = f'Unknown lego input port: {e}'
             self.get_logger().fatal(fatal_msg)
             raise IOError(fatal_msg) from e
-        self.declare_parameter('detection_mode', 'COLOR')
         self.detection_mode = \
             self.get_parameter('detection_mode').get_parameter_value().string_value
         if self.detection_mode == "COLOR":
@@ -47,7 +48,6 @@ class ColorSensorNode(Node):
                 self.get_logger().fatal(fatal_msg)
                 raise ValueError(fatal_msg)
         self.colormap = ["none", "Black", "Blue", "Green", "Yellow", "Red", "White", "Brown"]
-        self.declare_parameter('frequency', 2.0)
         timer_period = 1.0/self.get_parameter('frequency').get_parameter_value().double_value
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.get_logger().info("Node has started.")
