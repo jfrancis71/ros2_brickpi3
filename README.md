@@ -13,11 +13,11 @@ ROS2 packages to drive BrickPi3 (a Raspberry Pi to Lego EV3 hardware interface)
 
 ev3_sensor_msgs: ROS2 custom message package to support the touch_sensor and color_sensor.
 
-brickpi3_sensors: Python package to broadcast sensor messages from the BrickPi3 board.
+brickpi3_sensors: Python package to broadcast sensor messages from the BrickPi3 board. Currently supporting EV3 Touch, EV3 Ultrasonic, EV3 Infrared, EV3 Color, EV3/NXT Compass, EV3 Gyro, Battery Status.
 
-brickpi3_motors: C++ package to provide the hardware interface for the motors to the BrickPi3 board.
+brickpi3_motors: C++ package to provide a ROS2 Control hardware interface Plugin for the EV3 motors to the BrickPi3 board.
 
-charlie: a demonstration robot.
+charlie: a demonstration robot. Includes an example launch file (and configuration files) to configure a ROS2 Control Differential Drive Controller to use the brickpi3_motors plugin.
 
 ### Tested Hardware
 
@@ -32,6 +32,8 @@ Ubuntu 22.04, ROS2 Humble (RoboStack), BrickPi3
 Note, the user account that you use for this install should be a member of the dialout group (in order to access /dev/spidev... to control the BrickPi3 hardware interface)
 
 I suggest for following the installation steps to have the BrickPi3 running off an external power supply (rather than relying on battery power).
+
+The below instructions are for a RoboStack ROS2 humble install (for convenience). However, there is no dependency on RoboStack, any valid ROS2 Humble install should work.
 
 Follow the [RoboStack](https://robostack.github.io/GettingStarted.html) installation instructions to install ROS2
 
