@@ -1,8 +1,8 @@
 # ros2_brickpi3
 ROS2 packages to drive BrickPi3 (a Raspberry Pi to Lego EV3 hardware interface)
 
-![Charlie](https://drive.google.com/uc?id=1HpBjWU5ElbmEphY0IHUyzJGjYCNfd94t&export=download)
 
+<img src=./brickpi3_charlie/images/accessorised_charlie.jpg width=300>
 
 ## YouTube Tutorial
 <a href="https://www.youtube.com/watch?v=NZwhyERJVbY">
@@ -115,6 +115,8 @@ Note the DiffDrive controller interprets twist messages in metric, so need to sc
 You may need to alter depending on your joystick model:
 
 ```ros2 launch teleop_twist_joy teleop-launch.py config_filepath:=./src/ros2_brickpi3/brickpi3_charlie/config/xeox.config.yaml```
+
+[More pictures of Charlie](./brickpi3_charlie/README.md)
 
 ## Notes
 
