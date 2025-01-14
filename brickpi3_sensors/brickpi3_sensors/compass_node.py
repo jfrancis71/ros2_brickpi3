@@ -1,4 +1,4 @@
-"""CompassNode publishes message UInt16 on topic compass_bearing"""
+"""CompassNode publishes message QuaternionStamped on topic compass_bearing"""
 import time
 import math
 from scipy.spatial.transform import Rotation as R
