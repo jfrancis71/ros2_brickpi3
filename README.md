@@ -121,3 +121,20 @@ You may need to alter depending on your joystick model:
 ## Notes
 
 RoboStack current build has the differential drive controller listening for Twist messages. The latest ROS2 codebase has this controller listening for TwistStamped messages, so you can expect this to change in future RoboStack releases. This imples some care should be taken when using different ROS2 builds that the correct Twist message is being processed.
+
+## References
+
+YouTube video from Articulated Robots with overview of ROS2 control (accessed 26/01/2025):
+[Solving the problem EVERY robot has (with ros2_control)](https://www.youtube.com/watch?v=4QKsDf1c4hc&t=1057s)
+
+
+YouTube video from Articulated Robots with demo of how to write ROS2 Hardware Control Interface (accessed 26/01/2025):
+[You can use ANY hardware with ros2_control](https://www.youtube.com/watch?v=J02jEKawE5U)
+
+
+ROS2 Book:
+Robot Programming with ROS2, Francisco Martin Rico, 2023.
+
+
+Useful reference, summary of ROS2 commands:
+[ROS2 Cheat Sheet](https://www.theroboticsspace.com/assets/article3/ros2_humble_cheat_sheet2.pdf)
