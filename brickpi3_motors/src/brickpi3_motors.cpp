@@ -41,6 +41,7 @@ hardware_interface::CallbackReturn BrickPi3MotorsHardware::on_init(
   hw_velocities_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
   hw_commands_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
   hw_lego_ports_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
+  hw_gear_ratios_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
 
   for (const hardware_interface::ComponentInfo & joint : info_.joints)
   {
@@ -93,6 +94,8 @@ hardware_interface::CallbackReturn BrickPi3MotorsHardware::on_init(
   }
 
   // Map the hardware command interface onto lego port numbers
+  // Also set gear_ratio
+  const std::string gear_ratio_str = std::string("gear_ratio");
   for (auto i = 0u; i < info.joints.size(); i++)
   {
     std::map<std::string, int>::iterator pos = lego_port_map.find(info.joints[i].name);
@@ -105,6 +108,13 @@ hardware_interface::CallbackReturn BrickPi3MotorsHardware::on_init(
         "Unknown lego port '%s'", info.joints[i].name.c_str());
       return hardware_interface::CallbackReturn::ERROR;
     }
+
+    float gear_ratio = 1.0;
+    auto parameters = info.joints[i].parameters;
+    auto gear_param = parameters.find(gear_ratio_str);
+    if (gear_param != parameters.end())
+      gear_ratio = std::stod(gear_param->second);
+    hw_gear_ratios_[i] = gear_ratio;
   }
 
   return hardware_interface::CallbackReturn::SUCCESS;
@@ -186,6 +196,8 @@ hardware_interface::return_type BrickPi3MotorsHardware::read(
 {
   uint8_t state;
   int8_t power;
+  int32_t motor_position_degrees;
+  int16_t motor_dps;
   int32_t position_degrees;
   int16_t dps;
   double radps;
@@ -193,7 +205,9 @@ hardware_interface::return_type BrickPi3MotorsHardware::read(
 
   for (std::size_t i = 0; i < hw_velocities_.size(); i++)
   {
-    brickpi3.get_motor_status(hw_lego_ports_[i], state, power, position_degrees, dps);
+    brickpi3.get_motor_status(hw_lego_ports_[i], state, power, motor_position_degrees, motor_dps);
+    position_degrees = motor_position_degrees * hw_gear_ratios_[i];
+    dps = motor_dps * hw_gear_ratios_[i];
     position = position_degrees*(2.0*MATH_PI/360.0);
     radps = dps*(2.0*MATH_PI/360.0);
     hw_positions_[i]= position;
@@ -213,7 +227,8 @@ hardware_interface::return_type BrickPi3MotorsHardware::write(
       "Command interface %d has value %f.", i,
       hw_commands_[i]);
     double dps = hw_commands_[i]*360.0/(2.0*MATH_PI);
-    brickpi3.set_motor_dps(hw_lego_ports_[i], dps);
+    double motor_dps = dps / hw_gear_ratios_[i];
+    brickpi3.set_motor_dps(hw_lego_ports_[i], motor_dps);
   }
 
   return hardware_interface::return_type::OK;

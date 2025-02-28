@@ -59,6 +59,7 @@ private:
   std::vector<double> hw_positions_;
   std::vector<double> hw_velocities_;
   std::vector<int> hw_lego_ports_;
+  std::vector<double> hw_gear_ratios_;  // ratio of joint rotation to motor rotation
 };
 
 }  // namespace brickpi3_motors
