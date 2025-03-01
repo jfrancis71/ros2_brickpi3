@@ -12,4 +12,3 @@ These steps are not strictly necessary. I use the frame to attach a camera. Howe
 <img src="../images/front_mount/step_8.jpg" width=300>
 <img src="../images/front_mount/step_9.jpg" width=300>
 <img src="../images/front_mount/step_10.jpg" width=300>
-<img src="../images/front_mount/step_11.jpg" width=300>
