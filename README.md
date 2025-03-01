@@ -83,40 +83,7 @@ You can verify the motor installation by following the Charlie instructions.
 Charlie is just a minimalist demonstration robot, primarily to demonstrate how to control the motors.
 It is expected that you will wish to use your own repository to manage your own robots.
 
-Charlie uses the ROS2 control Differential Drive controller to manage the hardware interface to the motors.
-Therefore for this you will need to install:
-
-```
-mamba install ros-humble-diff-drive-controller ros-humble-rsl
-source ./install/setup.bash  # source the ROS2 workspace again
-```
-
-To start the differential drive controller, run:
-```
-ros2 launch brickpi3_charlie brickpi3_motors_launch.py
-```
-Charlie's configuration files are setup to assume BrickPi3 ports A and D are connected to the left and right EV3 motors respectively.
-
-On another computer or shell window:
-```
-ros2 topic pub --once /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
-```
-This should cause the motors to rotate (briefly).
-
-For robots with other types of drive mechanisms, eg ackermann, you should install the appropriate ROS2 controller.
-
-To control by keyboard:
-
-```ros2 run teleop_twist_keyboard teleop_twist_keyboard```
-
-To control by joystick:
-
-Note the DiffDrive controller interprets twist messages in metric, so need to scale joystick (otherwise the speed commands will be far to fast for Charlie to be safe with). The below config file is based off the teleop_twist_joy/confix/xbox.config.yaml, but modified to scale linear.x
-You may need to alter depending on your joystick model:
-
-```ros2 launch teleop_twist_joy teleop-launch.py config_filepath:=./src/ros2_brickpi3/brickpi3_charlie/config/xeox.config.yaml```
-
-[More pictures of Charlie](./brickpi3_charlie/README.md)
+[Charlie](./brickpi3_charlie/README.md)
 
 ## Notes
 
