@@ -79,6 +79,14 @@ You should see messages being broadcasted giving the EV3 infrared distance senso
 You can verify the motor installation by following the Charlie instructions.
 
 
+## Charlie
+
+Charlie is just a minimalist demonstration robot, primarily to demonstrate how to control the motors.
+It is expected that you will wish to use your own repository to manage your own robots.
+
+[Charlie](./brickpi3_charlie/README.md)
+
+
 ## References
 
 YouTube video from Articulated Robots with overview of ROS2 control (accessed 26/01/2025):
