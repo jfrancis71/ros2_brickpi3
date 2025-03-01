@@ -10,4 +10,4 @@
 <img src="../images/battery/step_8.jpg" width=300>
 <img src="../images/battery/step_9.jpg" width=300>
 
-I have added the battery, and you can see the above beam of length 2 attached just by the front of the battery. There is only one friction pin on this beam and it acts as a toggle, allowing you to insert/remove battery and lock it in place.
+Although here you can insert the battery from the right hand side, this will be closed off by further assembly. Note the 5 beam added in the previous step has a small beam of length 2 attached with a friction pin. This acts as a toggle allowing easy insert/remove battery (from the front) and to lock it in place.
