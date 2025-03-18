@@ -5,6 +5,6 @@
 <img src="../images/charlie/step_3.jpg" width=300>
 
 Time to wire up...The left wheel goes to PORT_A and right wheel to PORT_D.
-You can change this if you wish, providing you change the config robot_description.yaml config file correspondingly.
+You can change this if you wish, providing you change the robot_description.yaml config file correspondingly.
 
 <img src="../images/charlie/step_4.jpg" width=300>
