@@ -13,4 +13,3 @@
 <img src="../images/base/step_11.jpg" width=300>
 <img src="../images/base/step_12.jpg" width=300>
 <img src="../images/base/step_13.jpg" width=300>
-<img src="../images/base/step_14.jpg" width=300>
