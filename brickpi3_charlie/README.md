@@ -16,7 +16,7 @@ Charlie uses the ROS2 control Differential Drive controller to manage the hardwa
 Therefore for this you will need to install:
 
 ```
-mamba install ros-humble-diff-drive-controller ros-humble-rsl
+mamba install ros-jazzy-diff-drive-controller
 source ./install/setup.bash  # source the ROS2 workspace again
 ```
 
@@ -28,7 +28,7 @@ Charlie's configuration files are setup to assume BrickPi3 ports A and D are con
 
 On another computer or shell window:
 ```
-ros2 topic pub --once /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
+ros2 topic pub --once /cmd_vel geometry_msgs/msg/TwistStamped "{twist: {linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}}"
 ```
 This should cause the motors to rotate (briefly).
 
@@ -43,11 +43,7 @@ To control by joystick:
 Note the DiffDrive controller interprets twist messages in metric, so need to scale joystick (otherwise the speed commands will be far to fast for Charlie to be safe with). The below config file is based off the teleop_twist_joy/confix/xbox.config.yaml, but modified to scale linear.x
 You may need to alter depending on your joystick model:
 
-```ros2 launch teleop_twist_joy teleop-launch.py config_filepath:=./src/ros2_brickpi3/brickpi3_charlie/config/xeox.config.yaml```
-
-## Notes
-
-RoboStack current build has the differential drive controller listening for Twist messages. The latest ROS2 codebase has this controller listening for TwistStamped messages, so you can expect this to change in future RoboStack releases. This imples some care should be taken when using different ROS2 builds that the correct Twist message is being processed.
+```ros2 launch teleop_twist_joy teleop-launch.py config_filepath:=./src/ros2_brickpi3/brickpi3_charlie/config/xeox.config.yaml publish_stamped_twist:=true```
 
 
 # Accessorised Charlie
