@@ -55,6 +55,16 @@ colcon build --symlink-install
 ```
 You may receive a warning on the colcon build step: "SetuptoolsDeprecationWarning: setup.py install is deprecated", this can be ignored.
 
+### Troubleshooting
+
+I recommend having a seperate shell running htop so you can monitor progress. The Raspberry Pi 3B+ is quite memory limited which can cause problems installing some packages. If you see process status 'D' in htop relating to the install processes that persists this can indicate difficulties due to low memory. In this case I suggest before running the colcon build step (the final step in the instructions), adding:
+
+```
+export MAKEFLAGS="-j 1" # recommended to reduce memory usage.
+```
+
+Also I suggest adding some temporary swap (I found 2GB perfectly sufficient). See discussion from Digital Ocean in the References section. Don't forget to remove the swap after a succesful installation. (A swap file on an SD card will reduce card life significantly)
+
 
 ## Activate Environment
 
@@ -103,3 +113,7 @@ Robot Programming with ROS2, Francisco Martin Rico, 2023.
 
 Useful reference, summary of ROS2 commands:
 [ROS2 Cheat Sheet](https://www.theroboticsspace.com/assets/article3/ros2_humble_cheat_sheet2.pdf)
+
+
+Useful discussion on swap file on Ubuntu:
+https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04
