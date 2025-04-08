@@ -25,7 +25,7 @@ Raspberry Pi 3 Model B+, Dexter Industries BrickPi3
 
 ### Tested Software
 
-Ubuntu 22.04, ROS2 Humble (RoboStack), BrickPi3
+Ubuntu 22.04, ROS2 Jazzy (RoboStack), BrickPi3
 
 ## Installation
 
@@ -33,9 +33,9 @@ Note, the user account that you use for this install should be a member of the d
 
 I suggest for following the installation steps to have the BrickPi3 running off an external power supply (rather than relying on battery power).
 
-The below instructions are for a RoboStack ROS2 humble install (for convenience). However, there is no dependency on RoboStack, any valid ROS2 Humble install should work.
+The below instructions are for a RoboStack ROS2 Jazzy install (for convenience). However, there is no dependency on RoboStack, any valid ROS2 Jazzy install should work.
 
-Follow the [RoboStack](https://robostack.github.io/GettingStarted.html) installation instructions to install ROS2
+Follow the [RoboStack](https://robostack.github.io/GettingStarted.html) installation instructions to install ROS2 (use Jazzy)
 
 (Ensure you have also followed the step Installation tools for local development in the above instructions)
 
@@ -43,7 +43,7 @@ Follow the [RoboStack](https://robostack.github.io/GettingStarted.html) installa
 mamba activate ros2  # (use the name here you decided to call this conda environment)
 # scipy is used by the Gyro and Compass sensors. You can remove the scipy install if you do not intend to use
 # these sensors.
-mamba install scipy ros-humble-controller-manager
+mamba install scipy ros-jazzy-controller-manager
 cd ~
 git clone https://github.com/DexterInd/BrickPi3.git
 pip install BrickPi3/Software/Python
