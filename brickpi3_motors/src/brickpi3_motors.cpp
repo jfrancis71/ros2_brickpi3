@@ -55,42 +55,6 @@ hardware_interface::CallbackReturn BrickPi3MotorsHardware::on_init(
       return hardware_interface::CallbackReturn::ERROR;
     }
 
-    if (joint.command_interfaces[0].name != hardware_interface::HW_IF_VELOCITY)
-    {
-      RCLCPP_FATAL(
-        rclcpp::get_logger("BrickPi3MotorsHardware"),
-        "Joint '%s' have %s command interfaces found. '%s' expected.", joint.name.c_str(),
-        joint.command_interfaces[0].name.c_str(), hardware_interface::HW_IF_VELOCITY);
-      return hardware_interface::CallbackReturn::ERROR;
-    }
-
-    if (joint.state_interfaces.size() != 2)
-    {
-      RCLCPP_FATAL(
-        rclcpp::get_logger("BrickPi3MotorsHardware"),
-        "Joint '%s' has %zu state interface. 2 expected.", joint.name.c_str(),
-        joint.state_interfaces.size());
-      return hardware_interface::CallbackReturn::ERROR;
-    }
-
-    if (joint.state_interfaces[0].name != hardware_interface::HW_IF_POSITION)
-    {
-      RCLCPP_FATAL(
-        rclcpp::get_logger("BrickPi3MotorsHardware"),
-        "Joint '%s' have '%s' as first state interface. '%s' expected.", joint.name.c_str(),
-        joint.state_interfaces[0].name.c_str(), hardware_interface::HW_IF_POSITION);
-      return hardware_interface::CallbackReturn::ERROR;
-    }
-
-    if (joint.state_interfaces[1].name != hardware_interface::HW_IF_VELOCITY)
-    {
-      RCLCPP_FATAL(
-        rclcpp::get_logger("BrickPi3MotorsHardware"),
-        "Joint '%s' have '%s' as second state interface. '%s' expected.", joint.name.c_str(),
-        joint.state_interfaces[1].name.c_str(), hardware_interface::HW_IF_VELOCITY);
-      return hardware_interface::CallbackReturn::ERROR;
-    }
-
   }
 
   // Map the hardware command interface onto lego port numbers
@@ -98,6 +62,7 @@ hardware_interface::CallbackReturn BrickPi3MotorsHardware::on_init(
   const std::string gear_ratio_str = std::string("gear_ratio");
   for (auto i = 0u; i < info.joints.size(); i++)
   {
+    // Map the hardware command interface onto lego port numbers
     std::map<std::string, int>::iterator pos = lego_port_map.find(info.joints[i].name);
     if (pos != lego_port_map.end())
       hw_lego_ports_[i] = pos->second;
@@ -109,12 +74,22 @@ hardware_interface::CallbackReturn BrickPi3MotorsHardware::on_init(
       return hardware_interface::CallbackReturn::ERROR;
     }
 
+    // Also set gear_ratio
     float gear_ratio = 1.0;
     auto parameters = info.joints[i].parameters;
     auto gear_param = parameters.find(gear_ratio_str);
     if (gear_param != parameters.end())
       gear_ratio = std::stod(gear_param->second);
     hw_gear_ratios_[i] = gear_ratio;
+
+    // Also set joint command type
+    if (info.joints[i].command_interfaces[0].name == hardware_interface::HW_IF_VELOCITY || info.joints[i].command_interfaces[0].name == hardware_interface::HW_IF_POSITION)
+      hw_commands_interface_type_.push_back(info.joints[i].command_interfaces[0].name);
+    else
+      RCLCPP_FATAL(
+        rclcpp::get_logger("BrickPi3MotorsHardware"),
+        "Joint '%s' have %s command interfaces found. '%s' or '%s' expected.", info.joints[i].name.c_str(),
+        info.joints[i].command_interfaces[0].name.c_str(), hardware_interface::HW_IF_VELOCITY, hardware_interface::HW_IF_POSITION);
   }
 
   return hardware_interface::CallbackReturn::SUCCESS;
@@ -140,7 +115,7 @@ std::vector<hardware_interface::CommandInterface> BrickPi3MotorsHardware::export
   for (auto i = 0u; i < info_.joints.size(); i++)
   {
     command_interfaces.emplace_back(hardware_interface::CommandInterface(
-      info_.joints[i].name, hardware_interface::HW_IF_VELOCITY, &hw_commands_[i]));
+      info_.joints[i].name, hw_commands_interface_type_[i], &hw_commands_[i]));
   }
 
   return command_interfaces;
