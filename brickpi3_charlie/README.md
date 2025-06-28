@@ -36,7 +36,7 @@ For robots with other types of drive mechanisms, eg ackermann, you should instal
 
 To control by keyboard:
 
-```ros2 run teleop_twist_keyboard teleop_twist_keyboard```
+```ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -p stamped:=true```
 
 To control by joystick:
 
