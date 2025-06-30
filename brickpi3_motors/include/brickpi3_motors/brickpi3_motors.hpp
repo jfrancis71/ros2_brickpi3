@@ -52,6 +52,12 @@ public:
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
 private:
+
+  void set_parameter(const std::string& joint_name, const std::unordered_map<std::string, std::string>& parameters,
+    const std::string& parameter_name, int& parameter);
+  void set_parameter(const std::string& joint_name, const std::unordered_map<std::string, std::string>& parameters,
+    const std::string& parameter_name, double& parameter);
+
   double hw_start_sec_;
   double hw_stop_sec_;
 
@@ -60,7 +66,16 @@ private:
   std::vector<double> hw_velocities_;
   std::vector<int> hw_lego_ports_;
   std::vector<double> hw_gear_ratios_;  // ratio of joint rotation to motor rotation
-  std::vector<std::string> hw_commands_interface_type_; // velocity/position interface
+  std::vector<std::string> hw_commands_interface_type_;  // velocity/position interface
+
+  // Below are applicable to Position command interface.
+  std::vector<double> hw_min_position_limits_;
+  std::vector<double> hw_max_position_limits_;
+  std::vector<double> hw_position_zero_start_power_;
+  std::vector<int> hw_position_zero_start_wait_time_;  // ms
+  std::vector<double> hw_position_zero_stall_dps_threshold_;
+  std::vector<double> hw_position_zero_relative_;
+  std::vector<int> hw_position_zero_relative_wait_time_;  // ms
 };
 
 }  // namespace brickpi3_motors
