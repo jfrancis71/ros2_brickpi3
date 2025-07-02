@@ -95,8 +95,6 @@ hardware_interface::CallbackReturn BrickPi3MotorsHardware::on_init(
 
   // Map the hardware command interface onto lego port numbers
   const std::string gear_ratio_str = std::string("gear_ratio");
-  const std::string min_position_limit_str = std::string("min_position_limit");
-  const std::string max_position_limit_str = std::string("max_position_limit");
   for (auto i = 0u; i < info.joints.size(); i++)
   {
     // Map the hardware command interface onto lego port numbers
