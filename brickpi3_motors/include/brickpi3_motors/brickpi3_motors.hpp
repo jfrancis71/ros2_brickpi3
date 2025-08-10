@@ -16,7 +16,6 @@
 #include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
 #include "rclcpp_lifecycle/state.hpp"
 
-#include "brickpi3_motors/visibility_control.h"
 
 namespace brickpi3_motors
 {
@@ -25,29 +24,22 @@ class BrickPi3MotorsHardware : public hardware_interface::SystemInterface
 public:
   RCLCPP_SHARED_PTR_DEFINITIONS(BrickPi3MotorsHardware);
 
-  BRICKPI3_MOTORS_PUBLIC
   hardware_interface::CallbackReturn on_init(
     const hardware_interface::HardwareInfo & info) override;
 
-  BRICKPI3_MOTORS_PUBLIC
   std::vector<hardware_interface::StateInterface> export_state_interfaces() override;
 
-  BRICKPI3_MOTORS_PUBLIC
   std::vector<hardware_interface::CommandInterface> export_command_interfaces() override;
 
-  BRICKPI3_MOTORS_PUBLIC
   hardware_interface::CallbackReturn on_activate(
     const rclcpp_lifecycle::State & previous_state) override;
 
-  BRICKPI3_MOTORS_PUBLIC
   hardware_interface::CallbackReturn on_deactivate(
     const rclcpp_lifecycle::State & previous_state) override;
 
-  BRICKPI3_MOTORS_PUBLIC
   hardware_interface::return_type read(
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
-  BRICKPI3_MOTORS_PUBLIC
   hardware_interface::return_type write(
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
