@@ -31,5 +31,6 @@ docker build -t ros2_brickpi3 .
 
 Start Docker container with:
 ```
-docker run -it --privileged --rm -v ros2_ws:/home/ubuntu/ros2_ws --network=host --ipc=host ros2_brickpi3 /bin/bash
+docker run -it --rm --privileged -v ros2_ws:/home/ubuntu/ros2_ws -v $HOME/.gitconfig:/home/ubuntu/.gitconfig -v $HOME
+/.git-credentials:/home/ubuntu/.git-credentials --network=host --ipc=host ros2_brickpi3 /bin/bash
 ```
