@@ -31,6 +31,5 @@ docker build -t ros2_brickpi3 .
 
 Start Docker container with:
 ```
-docker run -it --rm -v ros2_ws:/home/ubuntu/ros2_ws --device=/dev/spidev0.1:/dev/spidev0.1:rwm --device=/dev/video0:/
-dev/video0:rwm --device=/dev/ttyUSB0:/dev/ttyUSB0:rwm --network=host --ipc=host ros2_brickpi3 /bin/bash
+docker run -it --privileged --rm -v ros2_ws:/home/ubuntu/ros2_ws --network=host --ipc=host ros2_brickpi3 /bin/bash
 ```
