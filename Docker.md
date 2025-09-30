@@ -6,6 +6,8 @@ and not run any applications which can execute arbitrary code from external sour
 
 ### To install Docker BrickPi3
 
+Tested on Raspberry Pi 3B+ on Ubuntu 22.04.5 LTS, Docker version 27.5.1
+
 Create Dockerfile in folder docker:
 ```
 FROM ros:jazzy-ros-base
@@ -48,6 +50,8 @@ colcon build --symlink-install
 Note it would have been convenient to do the above step within Docker, but if we do this then the ros2_ws workspace will originate from the docker image and therefore not persist.
 
 ### To install Docker on Desktop
+
+Tested on Ubuntu 22.04.5 LTS (Dell Precision Tower), Docker version 27.5.1
 
 Create Dockerfile in folder docker:
 ```
