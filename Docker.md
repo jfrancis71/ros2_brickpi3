@@ -71,5 +71,5 @@ docker build -t ros2 .
 
 Start Docker container with:
 ```
-docker run -it --rm --privileged -v ros2_ws:/root/ros2_ws -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials --network=host --ipc=host ros2 /bin/bash
+docker run -it --rm --privileged -v ros2_ws:/root/ros2_ws -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials -v="$XAUTHORITY:$XAUTHORITY" --network=host --ipc=host --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2 /bin/bash
 ```
