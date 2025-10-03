@@ -40,7 +40,7 @@ Start Docker container with:
 docker run -it --rm --privileged --network=host --ipc=host -v ros2_ws:/root/ros2_ws -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials ros2_brickpi3 /bin/bash
 ```
 
-We can build ros2 brickpi3 with:
+We can build ros2 brickpi3 (in the container) with:
 ```
 mkdir src
 git -C src clone https://github.com/jfrancis71/ros2_brickpi3.git
@@ -49,7 +49,7 @@ export MAKEFLAGS="-j 1"
 colcon build --symlink-install
 ```
 
-Note it would have been convenient to do the above step within Docker, but if we do this then the ros2_ws workspace will originate from the docker image and therefore not persist.
+Note it would have been convenient to do the above step within the Docker build file 'Dockerfile', but if we do this then the ros2_ws workspace will originate from the docker image and therefore not persist.
 
 ### To install Docker on Desktop
 
