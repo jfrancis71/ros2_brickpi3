@@ -1,7 +1,7 @@
 ## Experimental Docker Install
 
 Note that Docker will allow any Docker user to effectively act as root. Not suitable for multi user systems.
-Also note that in the below setup the container itself is running as root. You will want to take with firewalls
+Also note that in the below setup the container itself is running as root. You will want to take care with firewalls
 and not run any applications which can execute arbitrary code from external sources.
 
 ### To install Docker BrickPi3
