@@ -61,6 +61,7 @@ Create Dockerfile in folder docker:
 ```
 FROM ros:jazzy-ros-base
 RUN apt update
+RUN apt install -y vim
 RUN apt install -y python3-pip
 RUN apt install -y ros-jazzy-teleop-twist-keyboard
 RUN apt install -y ros-jazzy-teleop-twist-joy
