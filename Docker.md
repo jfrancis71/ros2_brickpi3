@@ -40,12 +40,14 @@ Start Docker container with:
 docker run -it --rm --privileged --network=host --ipc=host -v ros2_ws:/root/ros2_ws -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials ros2_brickpi3 /bin/bash
 ```
 
+If on a limited memory device (such as Raspberry Pi 3B+) you might want to do below step with swap enabled (2GB seems to be enough). You should remove swap when completed to save SD card wear.
+
 We can build ros2 brickpi3 (in the container) with:
 ```
 mkdir src
 git -C src clone https://github.com/jfrancis71/ros2_brickpi3.git
 export BRICKPI3_ROOT_DIR=/root/BrickPi3
-export MAKEFLAGS="-j 1"
+export MAKEFLAGS="-j 1"  # We have limited memory on Raspberry Pi 3B+, best to build sequentially.
 colcon build --symlink-install
 ```
 
