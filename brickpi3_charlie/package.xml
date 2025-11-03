@@ -3,10 +3,11 @@
 <package format="3">
   <name>brickpi3_charlie</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Charlie is a simple demonstration robot for package brickpi3_motors</description>
   <maintainer email="julian.w.francis@gmail.com">julian</maintainer>
-  <license>TODO: License declaration</license>
-
+  <license>MIT</license>
+  <exec_depend>brickpi3_motors</exec_depend>
+  <exec_depend>diff_drive_controller</exec_depend>
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>

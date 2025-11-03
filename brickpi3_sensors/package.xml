@@ -3,9 +3,9 @@
 <package format="3">
   <name>brickpi3_sensors</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="ubuntu@todo.todo">ubuntu</maintainer>
-  <license>TODO: License declaration</license>
+  <description>Python nodes for publishing BrickPi3 Lego EV3 sensor messages</description>
+  <maintainer email="julian.w.francis@gmail.com">ubuntu</maintainer>
+  <license>MIT</license>
 
   <exec_depend>ros2launch</exec_depend>
   <test_depend>ament_copyright</test_depend>
