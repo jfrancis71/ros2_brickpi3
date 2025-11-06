@@ -93,3 +93,7 @@ We also pass in our X Cookies and display device to allow us to run X11 programs
 ### General Notes
 
 In both the above setups I allow container access to all devices, and use of host networking. We use a Docker volume (ros2_ws) to persist our workspace. I pass my git credentials into the container for convenience in pushing git commits to github. We remove (--rm) containers when we are done (to prevent proliferation of redundant containers). If ROS2 believes two nodes are running on the same machine it uses a shared memory optimization to communicate. If these nodes are running in seperate containers this will be blocked (by default) by Docker. Hence the --ipc flag to override and allow shared memory across containers.
+
+# References
+
+YouTube: https://www.youtube.com/watch?v=uf4zOigzTFo, Devices in Docker - Not so simple, Articulated Robotics, 06 Oct 2023
