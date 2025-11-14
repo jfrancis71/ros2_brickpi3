@@ -85,7 +85,10 @@ The above build will take about 30 mins (on Dell Precision Tower).
 
 Start Docker container with:
 ```
-docker run -it --rm --privileged --network=host --ipc=host -v ros2_ws:/root/ros2_ws -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2 /bin/bash
+docker run -it --rm --privileged --network=host --ipc=host \
+    -v ros2_ws:/root/ros2_ws -v ros2_config:/root/ros2_config \
+    -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials \
+    -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2 /bin/bash
 ```
 
 We also pass in our X Cookies and display device to allow us to run X11 programs (eg rviz2) and display them.
