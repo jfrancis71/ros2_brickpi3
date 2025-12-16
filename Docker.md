@@ -85,7 +85,10 @@ The above build will take about 30 mins (on Dell Precision Tower).
 
 Start Docker container with:
 ```
-docker run -it --rm --privileged --network=host --ipc=host -v ros2_ws:/root/ros2_ws -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2 /bin/bash
+docker run -it --rm --privileged --network=host --ipc=host \
+    -v ros2_ws:/root/ros2_ws -v ros2_config:/root/ros2_config \
+    -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials \
+    -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2 /bin/bash
 ```
 
 We also pass in our X Cookies and display device to allow us to run X11 programs (eg rviz2) and display them.
@@ -93,3 +96,7 @@ We also pass in our X Cookies and display device to allow us to run X11 programs
 ### General Notes
 
 In both the above setups I allow container access to all devices, and use of host networking. We use a Docker volume (ros2_ws) to persist our workspace. I pass my git credentials into the container for convenience in pushing git commits to github. We remove (--rm) containers when we are done (to prevent proliferation of redundant containers). If ROS2 believes two nodes are running on the same machine it uses a shared memory optimization to communicate. If these nodes are running in seperate containers this will be blocked (by default) by Docker. Hence the --ipc flag to override and allow shared memory across containers.
+
+# References
+
+YouTube: https://www.youtube.com/watch?v=uf4zOigzTFo, Devices in Docker - Not so simple, Articulated Robotics, 06 Oct 2023
