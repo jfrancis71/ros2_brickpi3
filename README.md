@@ -32,27 +32,10 @@ Note, the user account that you use for this install should be a member of the d
 
 I suggest for following the installation steps to have the BrickPi3 running off an external power supply (rather than relying on battery power).
 
-The below instructions are for a RoboStack ROS2 Jazzy install (for convenience). However, there is no dependency on RoboStack, any valid ROS2 Jazzy install should work.
-
-Follow the [RoboStack](https://robostack.github.io/GettingStarted.html) installation instructions to install ROS2 (use Jazzy)
-
-(Ensure you have also followed the step Installation tools for local development in the above instructions)
-
 ```
-mamba activate ros2  # (use the name here you decided to call this conda environment)
-# scipy is used by the Gyro and Compass sensors. You can remove the scipy install if you do not intend to use
-# these sensors.
-mamba install scipy ros-jazzy-controller-manager
-cd ~
-git clone https://github.com/DexterInd/BrickPi3.git
-pip install BrickPi3/Software/Python
-mkdir -p ros2_ws/src
-cd ros2_ws
-git -C src clone https://github.com/jfrancis71/ros2_brickpi3.git
-export BRICKPI3_ROOT_DIR=~/BrickPi3
-colcon build --symlink-install
+git -C clone https://github.com/jfrancis71/ros2_brickpi3.git
+docker build -t ros2_brickpi3 ./docker/brickpi3
 ```
-You may receive a warning on the colcon build step: "SetuptoolsDeprecationWarning: setup.py install is deprecated", this can be ignored.
 
 ### Troubleshooting
 
@@ -68,8 +51,7 @@ Also I suggest adding some temporary swap (I found 2GB perfectly sufficient). Se
 ## Activate Environment
 
 ```
-mamba activate ros2 # (use the name here you decided to call this conda environment)
-cd ~/ros2_ws
+docker run -it --privileged --rm --network=host --ipc=host ros2_brickpi3
 source ./install/setup.bash
 ```
 
