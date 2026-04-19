@@ -16,7 +16,7 @@ Please note this is the latest version of Charlie that differs slightly from pre
 docker build -t charlie ./ros2_brickpi3/docker/charlie/
 ```
 ```
-docker run -it --privileged --rm --network=host --ipc=host charlie
+docker run -it --rm --network=host --ipc=host --device=/dev/spidev0.1 charlie
 ```
 
 Charlie's configuration files are setup to assume BrickPi3 ports A and D are connected to the left and right EV3 motors respectively.
