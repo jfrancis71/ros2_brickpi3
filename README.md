@@ -33,8 +33,10 @@ Note, the user account that you use for this install should be a member of the d
 I suggest for following the installation steps to have the BrickPi3 running off an external power supply (rather than relying on battery power).
 
 ```
-git -C clone https://github.com/jfrancis71/ros2_brickpi3.git
-docker build -t ros2_brickpi3 ./docker/brickpi3
+git clone -b microservices https://github.com/jfrancis71/ros2_brickpi3.git
+```
+```
+docker build -t ros2_brickpi3 ./ros2_brickpi3/docker/brickpi3
 ```
 
 ### Troubleshooting
@@ -46,6 +48,8 @@ I suggest adding some temporary swap (I found 2GB perfectly sufficient). See dis
 
 ```
 docker run -it --privileged --rm --network=host --ipc=host ros2_brickpi3
+```
+```
 source ./install/setup.bash
 ```
 
