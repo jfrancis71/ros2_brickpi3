@@ -24,7 +24,7 @@ Raspberry Pi 3 Model B+, Dexter Industries BrickPi3
 
 ### Tested Software
 
-Ubuntu 22.04, ROS2 Jazzy (RoboStack), BrickPi3
+Ubuntu 22.04, ROS2 Jazzy, BrickPi3
 
 ## Installation
 
@@ -39,23 +39,15 @@ docker build -t ros2_brickpi3 ./docker/brickpi3
 
 ### Troubleshooting
 
-I recommend having a seperate shell running htop so you can monitor progress. The Raspberry Pi 3B+ is quite memory limited which can cause problems installing some packages. If you see process status 'D' in htop relating to the install processes that persists this can indicate difficulties due to low memory. In this case I suggest before running the colcon build step (the final step in the instructions), adding:
-
-```
-export MAKEFLAGS="-j 1" # recommended to reduce memory usage.
-```
-
-Also I suggest adding some temporary swap (I found 2GB perfectly sufficient). See discussion from Digital Ocean in the References section. Don't forget to remove the swap after a succesful installation. (A swap file on an SD card will reduce card life significantly)
+I suggest adding some temporary swap (I found 2GB perfectly sufficient). See discussion from Digital Ocean in the References section. Don't forget to remove the swap after a succesful installation. (A swap file on an SD card will reduce card life significantly)
 
 
-## Activate Environment
+## Verify install
 
 ```
 docker run -it --privileged --rm --network=host --ipc=host ros2_brickpi3
 source ./install/setup.bash
 ```
-
-## Verify install
 
 This will test an EV3 infrared distance sensor connected to BrickPi3 sensor port 4.
 ```
