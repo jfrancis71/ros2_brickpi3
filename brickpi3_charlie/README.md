@@ -13,7 +13,9 @@ Please note this is the latest version of Charlie that differs slightly from pre
 ## Installation
 
 ```
-docker build -t charlie ./docker/charlie/
+docker build -t charlie ./ros2_brickpi3/docker/charlie/
+```
+```
 docker run -it --privileged --rm --network=host --ipc=host charlie
 ```
 
@@ -27,7 +29,9 @@ This should cause the motors to rotate (briefly).
 
 To control by keyboard:
 
-```ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -p stamped:=true```
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -p stamped:=true
+```
 
 To control by joystick:
 
