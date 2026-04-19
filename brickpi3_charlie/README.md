@@ -12,18 +12,11 @@ Please note this is the latest version of Charlie that differs slightly from pre
 
 ## Installation
 
-Charlie uses the ROS2 control Differential Drive controller to manage the hardware interface to the motors.
-Therefore for this you will need to install:
-
 ```
-mamba install ros-jazzy-diff-drive-controller
-source ./install/setup.bash  # source the ROS2 workspace again
+docker build -t charlie ./docker/charlie/
+docker run -it --privileged --rm --network=host --ipc=host charlie
 ```
 
-To start the differential drive controller, run:
-```
-ros2 launch brickpi3_charlie motors_launch.py
-```
 Charlie's configuration files are setup to assume BrickPi3 ports A and D are connected to the left and right EV3 motors respectively.
 
 On another computer or shell window:
@@ -31,8 +24,6 @@ On another computer or shell window:
 ros2 topic pub --once /cmd_vel geometry_msgs/msg/TwistStamped "{twist: {linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}}"
 ```
 This should cause the motors to rotate (briefly).
-
-For robots with other types of drive mechanisms, eg ackermann, you should install the appropriate ROS2 controller.
 
 To control by keyboard:
 
