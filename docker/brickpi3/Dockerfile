@@ -5,7 +5,7 @@ RUN apt install -y python3-pip
 WORKDIR /root
 RUN git clone https://github.com/DexterInd/BrickPi3.git
 WORKDIR /root/BrickPi3
-RUN git checkout 1036e9bfeb056c54b07fa35579df7da5710833ab
+RUN git checkout f725a28f8263e10354673f1283ba89996cc09486
 WORKDIR /root
 RUN pip install --break-system-packages BrickPi3/Software/Python
 RUN apt install -y ros-jazzy-controller-manager
