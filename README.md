@@ -47,7 +47,7 @@ I suggest adding some temporary swap (I found 2GB perfectly sufficient). See dis
 ## Verify install
 
 ```
-docker run -it --privileged --rm --network=host --ipc=host ros2_brickpi3
+docker run -it --rm --network=host --ipc=host --device=/dev/spidev0.1 ros2_brickpi3
 ```
 ```
 source ./install/setup.bash
