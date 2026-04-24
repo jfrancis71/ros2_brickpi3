@@ -33,7 +33,7 @@ Note, the user account that you use for this install should be a member of the d
 I suggest for following the installation steps to have the BrickPi3 running off an external power supply (rather than relying on battery power).
 
 ```
-git clone -b microservices https://github.com/jfrancis71/ros2_brickpi3.git
+git clone -b https://github.com/jfrancis71/ros2_brickpi3.git
 ```
 ```
 docker build -t ros2_brickpi3 ./ros2_brickpi3/docker/brickpi3
