@@ -41,7 +41,7 @@ docker build -t ros2_brickpi3 ./ros2_brickpi3/docker/brickpi3
 
 ### Troubleshooting
 
-I suggest adding some temporary swap (I found 2GB perfectly sufficient). See discussion from Digital Ocean in the References section. Don't forget to remove the swap after a succesful installation. (A swap file on an SD card will reduce card life significantly)
+I suggest adding some temporary swap (I found 2GB perfectly sufficient). See discussion from Digital Ocean in the References section. Don't forget to remove the swap after a successful installation. (A swap file on an SD card will reduce card life significantly)
 
 
 ## Verify install
